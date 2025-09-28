@@ -93,11 +93,6 @@
             color: var(--primary-color);
         }
 
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
         .btn {
             padding: 10px 20px;
             border-radius: var(--radius);
@@ -120,27 +115,6 @@
 
         .btn-primary:hover:not(:disabled) {
             background-color: var(--primary-dark);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover:not(:disabled) {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-email {
-            font-weight: 500;
         }
 
         /* Hero Section */
@@ -209,7 +183,22 @@
             color: var(--primary-color);
         }
 
-        .job-location {
+        .job-company {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .job-type {
+            display: inline-block;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .job-category {
             display: flex;
             align-items: center;
             gap: 5px;
@@ -273,122 +262,6 @@
             border: 1px solid var(--error-color);
         }
 
-        .warning {
-            background-color: rgba(245, 158, 11, 0.1);
-            color: var(--warning-color);
-            border: 1px solid var(--warning-color);
-        }
-
-        /* Auth Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: var(--white);
-            border-radius: var(--radius);
-            padding: 30px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: var(--shadow);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .modal-header h3 {
-            color: var(--primary-color);
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-light);
-        }
-
-        .auth-tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .auth-tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: 500;
-            border-bottom: 2px solid transparent;
-        }
-
-        .auth-tab.active {
-            border-bottom: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .auth-form {
-            display: none;
-        }
-
-        .auth-form.active {
-            display: block;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--white);
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: var(--text-light);
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .copyright {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
         /* Success Popup */
         .success-popup {
             position: fixed;
@@ -434,6 +307,48 @@
             display: none;
         }
 
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .header-content {
@@ -456,11 +371,31 @@
             .jobs-grid {
                 grid-template-columns: 1fr;
             }
+        }
+        
+        /* Loading animation */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+            position: relative;
+        }
 
-            .auth-buttons {
-                width: 100%;
-                justify-content: center;
-            }
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
     </style>
 </head>
@@ -475,21 +410,9 @@
                 <nav>
                     <ul>
                         <li><a href="#jobs">Available Jobs</a></li>
-                        <li id="nav-apply" style="display: none;"><a href="#apply">Apply Now</a></li>
+                        <li><a href="#apply">Apply Now</a></li>
                     </ul>
                 </nav>
-                <div class="auth-buttons">
-                    <div id="auth-section">
-                        <button id="login-btn" class="btn btn-outline">Login</button>
-                        <button id="signup-btn" class="btn btn-primary">Sign Up</button>
-                    </div>
-                    <div id="user-section" style="display: none;">
-                        <div class="user-info">
-                            <span class="user-email" id="user-email"></span>
-                            <button id="logout-btn" class="btn btn-outline">Logout</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
@@ -497,8 +420,8 @@
     <main>
         <section class="hero" id="hero">
             <div class="container">
-                <h1>Find Your Dream Job Today</h1>
-                <p>Connect with top employers and discover opportunities that match your skills and aspirations.</p>
+                <h1>Find Your Dream Job in Taiwan</h1>
+                <p>Connect with top employers and discover opportunities that match your skills and aspirations in beautiful Taiwan.</p>
                 <a href="#jobs" class="btn btn-primary">View Available Jobs</a>
             </div>
         </section>
@@ -506,7 +429,7 @@
         <section id="jobs">
             <div class="container">
                 <div class="section-header">
-                    <h2>Available Jobs</h2>
+                    <h2>Available Jobs in Taiwan</h2>
                     <p>Browse through our latest job openings and find the perfect match for your career.</p>
                 </div>
                 <div class="jobs-grid" id="jobs-container">
@@ -515,7 +438,7 @@
             </div>
         </section>
 
-        <section id="apply" style="display: none;">
+        <section id="apply">
             <div class="container">
                 <div class="section-header">
                     <h2>Apply for a Job</h2>
@@ -534,7 +457,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" readonly>
+                            <input type="email" id="email" required>
                         </div>
                         <div class="form-group">
                             <label for="city">City</label>
@@ -545,35 +468,14 @@
                             <input type="text" id="country" required>
                         </div>
                         <div class="form-group">
-                            <label for="domain">Interested Domain</label>
-                            <select id="domain" required>
-                                <option value="">Select a domain</option>
-                                <option value="Frontend Developer">Frontend Developer</option>
-                                <option value="Data Scientist">Data Scientist</option>
-                                <option value="UX Designer">UX Designer</option>
-                                <option value="Marketing Manager">Marketing Manager</option>
-                                <option value="Software Engineer">Software Engineer</option>
-                                <option value="Product Manager">Product Manager</option>
-                                <option value="Finance">Finance</option>
-                                <option value="HR">Human Resources</option>
-                                <option value="Sales">Sales</option>
-                                <option value="Other">Other</option>
+                            <label for="job-interest">Job You're Applying For</label>
+                            <select id="job-interest" required>
+                                <option value="">Select a job</option>
+                                <option value="Nurses Jobs in Taiwan">Nurses Jobs in Taiwan</option>
+                                <option value="Engineering Jobs in Taiwan">Engineering Jobs in Taiwan</option>
+                                <option value="Field Working Jobs in Taiwan">Field Working Jobs in Taiwan</option>
+                                <option value="Skilled Working Jobs in Taiwan">Skilled Working Jobs in Taiwan</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="experience">Years of Experience</label>
-                            <select id="experience" required>
-                                <option value="">Select experience</option>
-                                <option value="0-1">0-1 years</option>
-                                <option value="1-3">1-3 years</option>
-                                <option value="3-5">3-5 years</option>
-                                <option value="5-10">5-10 years</option>
-                                <option value="10+">10+ years</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="skills">Key Skills</label>
-                            <textarea id="skills" rows="3" placeholder="List your key skills separated by commas" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
                     </form>
@@ -588,6 +490,7 @@
                 <div class="footer-logo">Taiwan Jobs</div>
                 <div class="footer-links">
                     <a href="#jobs">Jobs</a>
+                    <a href="#apply">Apply</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                 </div>
@@ -607,86 +510,39 @@
         <button class="btn btn-primary" id="close-popup">Continue</button>
     </div>
 
-    <!-- Auth Modal -->
-    <div class="modal" id="auth-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modal-title">Login to Your Account</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="auth-tabs">
-                <div class="auth-tab active" data-tab="login">Login</div>
-                <div class="auth-tab" data-tab="signup">Sign Up</div>
-            </div>
-            <div id="login-form" class="auth-form active">
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" required>
-                </div>
-                <div id="login-message"></div>
-                <button id="login-submit" class="btn btn-primary" style="width: 100%;">Login</button>
-            </div>
-            <div id="signup-form" class="auth-form">
-                <div class="form-group">
-                    <label for="signup-email">Email</label>
-                    <input type="email" id="signup-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-password">Password</label>
-                    <input type="password" id="signup-password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" required>
-                </div>
-                <div id="signup-message"></div>
-                <button id="signup-submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
-            </div>
-        </div>
-    </div>
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
-
-    <script>
-        // Your Firebase configuration
+        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyC0yphAUxxsoo5QJRxpYVWn-HsBa4wM7WQ",
             authDomain: "tawin-jobs.firebaseapp.com",
             projectId: "tawin-jobs",
-            storageBucket: "tawin-jobs.appspot.com",
+            storageBucket: "tawin-jobs.firebasestorage.app",
             messagingSenderId: "4454469647",
             appId: "1:4454469647:web:10621c171b17b5ddf2137a",
             measurementId: "G-K27MP0XN44"
         };
 
         // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
 
+        // Make Firebase available globally
+        window.firebaseApp = app;
+        window.firebaseDb = db;
+        window.firebaseServerTimestamp = serverTimestamp;
+        window.firebaseCollection = collection;
+        window.firebaseAddDoc = addDoc;
+    </script>
+
+    <script>
         // DOM Elements
-        const authSection = document.getElementById('auth-section');
-        const userSection = document.getElementById('user-section');
-        const userEmail = document.getElementById('user-email');
-        const loginBtn = document.getElementById('login-btn');
-        const signupBtn = document.getElementById('signup-btn');
-        const logoutBtn = document.getElementById('logout-btn');
-        const authModal = document.getElementById('auth-modal');
-        const closeModal = document.querySelector('.close-modal');
-        const authTabs = document.querySelectorAll('.auth-tab');
-        const loginForm = document.getElementById('login-form');
-        const signupForm = document.getElementById('signup-form');
-        const loginSubmit = document.getElementById('login-submit');
-        const signupSubmit = document.getElementById('signup-submit');
-        const loginMessage = document.getElementById('login-message');
-        const signupMessage = document.getElementById('signup-message');
         const applicationForm = document.getElementById('application-form');
         const applicationMessage = document.getElementById('application-message');
         const jobsContainer = document.getElementById('jobs-container');
@@ -694,91 +550,47 @@
         const popupOverlay = document.getElementById('popup-overlay');
         const closePopupBtn = document.getElementById('close-popup');
 
-        // Nav and Section Elements
-        const mainElement = document.querySelector('main');
-        const navApply = document.getElementById('nav-apply');
-        const allSections = mainElement.querySelectorAll('section');
-
-        // Sample jobs data
-        const sampleJobs = [
-            { id: '1', title: 'Frontend Developer', location: 'New York, NY' },
-            { id: '2', title: 'Data Scientist', location: 'San Francisco, CA' },
-            { id: '3', title: 'UX Designer', location: 'Chicago, IL' },
-            { id: '4', title: 'Marketing Manager', location: 'Austin, TX' },
-            { id: '5', title: 'Software Engineer', location: 'Seattle, WA' },
-            { id: '6', title: 'Product Manager', location: 'Boston, MA' }
+        // Jobs data
+        const jobs = [
+            { 
+                id: '1', 
+                title: 'Nurses Jobs in Taiwan', 
+                company: 'Taiwan Healthcare Network',
+                type: 'Full-time',
+                category: 'Healthcare',
+                location: 'Taiwan'
+            },
+            { 
+                id: '2', 
+                title: 'Engineering Jobs in Taiwan', 
+                company: 'Taiwan Engineering Corp',
+                type: 'Full-time',
+                category: 'Engineering',
+                location: 'Taiwan'
+            },
+            { 
+                id: '3', 
+                title: 'Field Working Jobs in Taiwan', 
+                company: 'Taiwan Field Services',
+                type: 'Full-time',
+                category: 'Field Work',
+                location: 'Taiwan'
+            },
+            { 
+                id: '4', 
+                title: 'Skilled Working Jobs in Taiwan', 
+                company: 'Taiwan Skilled Labor Union',
+                type: 'Full-time',
+                category: 'Skilled Labor',
+                location: 'Taiwan'
+            }
         ];
 
-        // --- EVENT LISTENERS ---
-        loginBtn.addEventListener('click', () => openAuthModal('login'));
-        signupBtn.addEventListener('click', () => openAuthModal('signup'));
-        closeModal.addEventListener('click', closeAuthModal);
-        logoutBtn.addEventListener('click', handleLogout);
-        loginSubmit.addEventListener('click', handleLogin);
-        signupSubmit.addEventListener('click', handleSignup);
+        // Event Listeners
         applicationForm.addEventListener('submit', handleApplicationSubmit);
         closePopupBtn.addEventListener('click', closeSuccessPopup);
 
-        // Auth tab switching
-        authTabs.forEach(tab => {
-            tab.addEventListener('click', () => switchAuthTab(tab.dataset.tab));
-        });
-        
-        // Navigation link handling
-        document.querySelector('nav').addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                const sectionId = e.target.getAttribute('href').substring(1);
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
-
-        // --- FUNCTIONS ---
-        
-        function showHideSections(userLoggedIn) {
-            allSections.forEach(section => {
-                const id = section.id;
-                // Always show hero and jobs
-                if (id === 'hero' || id === 'jobs') {
-                    section.style.display = 'block';
-                }
-                // Only show apply section if logged in
-                else if (id === 'apply') {
-                    section.style.display = userLoggedIn ? 'block' : 'none';
-                }
-            });
-             // Hide Hero section for logged-in users to give a "dashboard" feel
-            document.getElementById('hero').style.display = userLoggedIn ? 'none' : 'block';
-        }
-        
-        function openAuthModal(tab) {
-            authModal.style.display = 'flex';
-            switchAuthTab(tab);
-        }
-
-        function closeAuthModal() {
-            authModal.style.display = 'none';
-            clearAuthMessages();
-        }
-
-        function switchAuthTab(tab) {
-            authTabs.forEach(t => t.classList.remove('active'));
-            document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
-            loginForm.classList.remove('active');
-            signupForm.classList.remove('active');
-            document.getElementById(`${tab}-form`).classList.add('active');
-            document.getElementById('modal-title').textContent =
-                tab === 'login' ? 'Login to Your Account' : 'Create an Account';
-            clearAuthMessages();
-        }
-
-        function clearAuthMessages() {
-            loginMessage.innerHTML = '';
-            signupMessage.innerHTML = '';
-        }
-
+        // Functions
         function showMessage(element, message, type) {
             element.innerHTML = `<div class="message ${type}">${message}</div>`;
             setTimeout(() => { element.innerHTML = ''; }, 5000);
@@ -794,126 +606,63 @@
             popupOverlay.style.display = 'none';
         }
 
-        function handleLogin() {
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            if (!email || !password) {
-                showMessage(loginMessage, 'Please fill in all fields', 'error');
-                return;
-            }
-            auth.signInWithEmailAndPassword(email, password)
-                .then(userCredential => closeAuthModal())
-                .catch(error => showMessage(loginMessage, error.message, 'error'));
-        }
-
-        function handleSignup() {
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-
-            if (!email || !password || !confirmPassword) {
-                showMessage(signupMessage, 'Please fill in all fields', 'error');
-                return;
-            }
-            if (password !== confirmPassword) {
-                showMessage(signupMessage, 'Passwords do not match', 'error');
-                return;
-            }
-            if (password.length < 6) {
-                showMessage(signupMessage, 'Password should be at least 6 characters', 'error');
-                return;
-            }
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .then(userCredential => closeAuthModal())
-                .catch(error => showMessage(signupMessage, error.message, 'error'));
-        }
-
-        function handleLogout() {
-            auth.signOut();
-        }
-
-        function updateUIForUser(user) {
-            if (user) {
-                // User is signed in
-                authSection.style.display = 'none';
-                userSection.style.display = 'flex';
-                userEmail.textContent = user.email;
-                
-                navApply.style.display = 'list-item';
-
-                document.getElementById('email').value = user.email;
-                showHideSections(true);
-
-            } else {
-                // User is signed out
-                authSection.style.display = 'flex';
-                userSection.style.display = 'none';
-                
-                navApply.style.display = 'none';
-                showHideSections(false);
-
-                applicationForm.reset();
-            }
-        }
-
         async function handleApplicationSubmit(e) {
             e.preventDefault();
-            const user = auth.currentUser;
-            if (!user) {
-                showMessage(applicationMessage, 'Please log in to submit an application', 'error');
-                return;
-            }
 
             const fullName = document.getElementById('full-name').value;
             const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
             const city = document.getElementById('city').value;
             const country = document.getElementById('country').value;
-            const domain = document.getElementById('domain').value;
-            const experience = document.getElementById('experience').value;
-            const skills = document.getElementById('skills').value;
+            const jobInterest = document.getElementById('job-interest').value;
             
             const submitButton = e.target.querySelector('button[type="submit"]');
             submitButton.disabled = true;
+            submitButton.classList.add('loading');
             submitButton.textContent = 'Submitting...';
 
             try {
                 // Save application to Firestore
-                await db.collection('applications').add({
-                    userId: user.uid,
+                const docRef = await window.firebaseAddDoc(window.firebaseCollection(window.firebaseDb, 'applications'), {
                     fullName,
                     phone,
-                    email: user.email,
+                    email,
                     city,
                     country,
-                    domain,
-                    experience,
-                    skills,
-                    appliedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    jobInterest,
+                    appliedAt: window.firebaseServerTimestamp()
                 });
 
-                // Show success popup instead of inline message
+                console.log('Application saved with ID: ', docRef.id);
+                
+                // Show success popup
                 showSuccessPopup();
                 applicationForm.reset();
-                document.getElementById('email').value = user.email; // Re-fill email
-
+                
             } catch (error) {
                 console.error('Error saving application:', error);
                 showMessage(applicationMessage, 'Error saving application: ' + error.message, 'error');
             } finally {
                 submitButton.disabled = false;
+                submitButton.classList.remove('loading');
                 submitButton.textContent = 'Submit Application';
             }
         }
 
         function loadJobs() {
             jobsContainer.innerHTML = '';
-            sampleJobs.forEach(job => {
+            jobs.forEach(job => {
                 const jobCard = document.createElement('div');
                 jobCard.className = 'job-card';
                 jobCard.innerHTML = `
                     <h3 class="job-title">${job.title}</h3>
-                    <div class="job-location">
+                    <div class="job-company">${job.company}</div>
+                    <span class="job-type">${job.type}</span>
+                    <div class="job-category">
+                        <i class="fas fa-tag"></i>
+                        <span>${job.category}</span>
+                    </div>
+                    <div class="job-category">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>${job.location}</span>
                     </div>
@@ -926,26 +675,17 @@
 
             document.querySelectorAll('.apply-now-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    const user = auth.currentUser;
-                    // Check for user and show login modal if not logged in
-                    if (user) {
-                        const jobTitle = e.target.dataset.jobTitle;
-                        document.getElementById('domain').value = jobTitle;
-                        document.getElementById('apply').scrollIntoView();
-                    } else {
-                        showMessage(loginMessage, 'Please log in to apply for a job.', 'error');
-                        openAuthModal('login');
-                    }
+                    const jobTitle = e.target.dataset.jobTitle;
+                    document.getElementById('job-interest').value = jobTitle;
+                    document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
                 });
             });
         }
 
-        // --- INITIALIZE THE APP ---
+        // Initialize the app
         function init() {
             loadJobs();
-            auth.onAuthStateChanged(user => updateUIForUser(user));
             window.addEventListener('click', (e) => {
-                if (e.target === authModal) closeAuthModal();
                 if (e.target === popupOverlay) closeSuccessPopup();
             });
         }
